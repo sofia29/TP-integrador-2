@@ -14,6 +14,7 @@ while (accion !== "SALIR") {
 
   - 👤 [CREAR] un usuario 
   - 🔎 [BUSCAR] un usuario
+  - 📄 [LISTAR] todos los usuarios
   - 🗑️ [ELIMINAR] un usuario
   - 🚪 [SALIR] del programa
   `)
@@ -113,6 +114,16 @@ ingresando el número correspondiente:
   repetirProcedimientoBuscar = prompt(`¿Desea repetir el procedimiento? SI/NO`)
   }
   }
+
+
+else if (accion === "LISTAR") {
+  let preguntaRepeticionListar = ""
+while (preguntaRepeticionListar !== "NO") {
+alert(`Estos son todos los usuarios:
+${usuarios.join("\n")}`)
+preguntaRepeticionListar = prompt(`¿Desea repetir la operación? SI/NO`)
+}
+}
 
 else if (accion === "ELIMINAR") {
 
