@@ -1,29 +1,25 @@
 const usuarios = [
 
     [0, "Carla", 1545628984, "carla@gmail.com"],
-    [1,"Pedro", 1545251245, "pedro@gmail.com"],
+    [1, "Pedro", 1545251245, "pedro@gmail.com"],
     [2, "Lucas", 1523357849, "lucas@gmail.com"],
     [3, "Ana", 15789456, "ana@gmail.com"],
 ]
-console.log(usuarios)
 
-
-let accion = prompt(`Por favor, indique qué accion desea tomar: 
-
-- 👤 [CREAR] un usuario 
-- 🔎 [BUSCAR] un usuario
-- 🗑️ [ELIMINAR] un usuario
-- 🚪 [SALIR] del programa
-`)
-
-
+let accion = ""
 
 while (accion !== "SALIR") {
 
-//CODIGO PARA CREAR UN USUARIO
+  accion = prompt(`Por favor, indique qué accion desea tomar: 
+
+  - 👤 [CREAR] un usuario 
+  - 🔎 [BUSCAR] un usuario
+  - 🗑️ [ELIMINAR] un usuario
+  - 🚪 [SALIR] del programa
+  `)
 
 if (accion === "CREAR") {
-  let preguntaRepeticionCrear = ""
+  let preguntaRepeticionCrear = " "
   while (preguntaRepeticionCrear !== "NO") {
     let nombre = prompt("Por favor, ingrese su nombre de pila")
     let telefono = prompt("Por favor, ingrese su numero de telefono")
@@ -32,7 +28,7 @@ if (accion === "CREAR") {
 Telefono: ${telefono}
 Email: ${email} 
 ¿Confirma datos? SI/NO`)
-    if (confirmacion === "NO") {
+    if (confirmacion.toLowerCase() === "no") {
         alert(`La acción fue cancelada`)
     }
 
@@ -43,18 +39,12 @@ Email: ${email}
         Nombre: ${nombre}
         Telefono: ${telefono}
         Email: ${email}`)
-        alert(`Estos son los usuarios actuales: ${usuarios}`)
-        
+        alert(`Estos son los usuarios actuales: 
+        ${usuarios.join("\n")}`)     
     }
-
-preguntaRepeticionCrear = prompt("¿Desea volver a realizar el procedimiento? SI/NO")
-
+    preguntaRepeticionCrear = prompt("¿Desea volver a realizar el procedimiento? SI/NO");
 }
-
 }
-
-//CODIGO PARA BUSCAR UN USUARIO
-
 
 else if (accion === "BUSCAR") {
 
@@ -62,7 +52,7 @@ else if (accion === "BUSCAR") {
   while (repetirProcedimientoBuscar !== "NO") {
   
   let preguntaBusqueda = prompt(`Por favor, indique por qué dato quiere buscar al usuario, 
-    ingresando el número correspondiente:
+ingresando el número correspondiente:
     - ID: 1
     - Nombre: 2
     - Número de teléfono: 3
@@ -78,8 +68,8 @@ else if (accion === "BUSCAR") {
                 alert(usuarios[i])    
             }
             //else {
-            //    alert(`El usuario buscado no existe`)
-            // } ESTO ACA PARA CUANDO PONEN DATO INCORRECTO NO ME FUNCIONA Y NO SE POR QUE 
+            //alert(`El usuario buscado no existe`)
+           //}
           }
           }
           break;
@@ -96,8 +86,7 @@ else if (accion === "BUSCAR") {
   case "3":
       let preguntaTelefonoABuscar = prompt(`Por favor, ingrese el número de teléfono del usuario que quiere buscar`)
       let respuestaTelefonoABuscar = Number(preguntaTelefonoABuscar)  
-  
-      for (let i = 0; i < usuarios.length; i++) {
+       for (let i = 0; i < usuarios.length; i++) {
         for (let j = 0; j < usuarios[i].length; j++) {
       
           if (usuarios[i][j] === respuestaTelefonoABuscar) {
@@ -113,8 +102,7 @@ else if (accion === "BUSCAR") {
         
             if (usuarios[i][j] === preguntaMailABuscar) {
               alert(usuarios[i])    
-          } 
-          
+          }        
         }
         }
    break;  
@@ -122,17 +110,9 @@ else if (accion === "BUSCAR") {
     alert(`La opción ingresada no es válida`)
     break;
   }
- 
-    
-repetirProcedimientoBuscar = prompt(`¿Desea repetir el procedimiento? SI/NO`)
-  
+  repetirProcedimientoBuscar = prompt(`¿Desea repetir el procedimiento? SI/NO`)
   }
-  
-}
-
-
-
-//CODIGO PARA ELIMINAR UN USUARIO
+  }
 
 else if (accion === "ELIMINAR") {
 
@@ -151,7 +131,7 @@ if (usuarios[i][j] === respuestaIdAEliminar) {
   if (confirmacionEliminacion.toLowerCase() === "si") {
     usuarios.splice(i, 1)
     alert(`Se ha eliminado el usuario exitosamente.`)
-    alert(`Estos son los usuarios que quedan: ${usuarios}.`) 
+    alert(`Estos son los usuarios que quedan: ${usuarios.join("\n")}.`) 
     }        
     else if (confirmacionEliminacion.toLowerCase() === "no") {
     alert(`La operacion fue cancelada.`)
@@ -166,20 +146,25 @@ preguntaRepeticionEliminar = prompt(`¿Desea repetir la operación? SI/NO`)
 }
 }
 
+
+else if (accion === "SALIR") {
+  let preguntaConfirmacionSalir = prompt(`¿Confirma que desea salir del programa? SI/NO`)
+ 
+  if (preguntaConfirmacionSalir === "SI") {
+    alert(`Hasta la próxima.`)
+    }
+
   else {
-    alert(`La opción ingresada no es válida`)
+    alert(`Si no quiere salir, volvemos a empezar.`)
+    accion = ""
+  }  
+
+} 
+
+  else {
+    alert(`La opción ingresada no es válida. Volvemos a empezar.`)
+    
   }
 
 }
-
-//CODIGO PARA SALIR
-
-if (accion === "SALIR") {
-  let preguntaConfirmacionSalir = prompt(`¿Confirma que desea salir del programa? SI/NO`)
- 
-   if (preguntaConfirmacionSalir === "SI") {
-     alert(`Hasta la próxima`)
-     }
-
-  }
 
