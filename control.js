@@ -129,13 +129,14 @@ else if (accion === "ELIMINAR") {
 
 let preguntaRepeticionEliminar = ""
 while (preguntaRepeticionEliminar !== "NO") {
-let preguntaIdAEliminar = prompt(`Por favor, ingrese el ID del usuario que quiere eliminar`)
+let usuarioEncontrado = false;
+  let preguntaIdAEliminar = prompt(`Por favor, ingrese el ID del usuario que quiere eliminar`)
 let respuestaIdAEliminar = Number(preguntaIdAEliminar)
 
 for (let i = 0; i < usuarios.length; i++) {
-  for (let j = 0; j < usuarios[i].length; j++) {
-if (usuarios[i][j] === respuestaIdAEliminar) {
-  let confirmacionEliminacion = prompt(`Estos son los datos del usuario buscado:
+  if (usuarios[i][0] === respuestaIdAEliminar) {
+  usuarioEncontrado = true;
+    let confirmacionEliminacion = prompt(`Estos son los datos del usuario buscado:
   ${usuarios[i]}
   ¿Confirma que desea eliminar los datos de este usuario? SI/NO`)
 
@@ -147,11 +148,10 @@ if (usuarios[i][j] === respuestaIdAEliminar) {
     else if (confirmacionEliminacion.toLowerCase() === "no") {
     alert(`La operacion fue cancelada.`)
   }
-  } 
-//  else {
- // (`El usuario que desea eliminar no existe.`)
-//} ESTE CODIGO ACA ME ROMPE TODO
-}
+  }
+ }
+if (usuarioEncontrado == false) {
+  alert(`El usuario ingresado no existe.`)
 }
 preguntaRepeticionEliminar = prompt(`¿Desea repetir la operación? SI/NO`)
 }
