@@ -1,3 +1,29 @@
+// Sofi, quiero en primer lugar felicitarte porque tu trabajo es excelente. 
+// Tu codigo es muy bueno, se nota el esfuerzo por corregir detalles y hacer que todo
+// funcione de la mejor manera para el usuario
+// El uso de variables es excelente, se nota el esfuerzo puesto ahi, asi como
+// el correcto uso de las distintas estructuras vistas. 
+// Sentite muy orgullosa de vos misma, porque este fue un trabajo dificil y cumpliste con creces. 
+
+// Una observacion general para mejorar es que tu codigo no usa bien el tabulado, y
+// con tantos ifs y fors se hace dificil a veces ver que cosa esta dentro de cada una. 
+// Por ejemplo en la linea 230 vemos esto:
+// }
+// }
+// } 
+// Cuando un codigo bien tabulado lo mostraria asi:
+//     }
+//   }
+// } 
+// Quiza para vos no sea un problema al escribirlo, pero te recomiendo que antes de 
+// entregar un codigo lo dejes mas prolijo (en visual studio, con clic derecho 
+// vas a ver la opcion "format document" que ayuda bastante)
+
+// Dentro de tu codigo deje dos observaciones nada mas, ninguna demasiado importante, 
+// son detalles minimos que creo te pueden servir para otras ocasiones. 
+
+// Felicitaciones y seguí así!
+
 const usuarios = [
 
     [0, "Carla", 1545628984, "carla@gmail.com"],
@@ -22,6 +48,23 @@ while (accion !== "SALIR") {
   accionMinuscula = accion.toLowerCase()
 
 if (accionMinuscula === "crear") {
+  // Esto es un detalle, que no te afecta y quiza no sea importante para vos por mucho tiempo mas
+  // Pero aprovecho para comentarlo. 
+  // Cuando queremos crear una variable string vacia, hacemos "". 
+  // No le ponemos un espacio en el medio. 
+  // La razon es que un string vacio, sin espacio, evalúa como "false" (por ejemplo en un if)
+  // y un string vacio pero con un espacio evalúa como true. 
+  // Hoy por hoy eso no te afecta, pero es practica habitual usar esto 
+  // Por ejemplo, supongamos que quiero saber si el usuario no respondió cuando
+  // le pregunte si queria repetir
+  // Podria escribir:
+    // if (preguntaRepeticionCrear == false) {
+    //   alert("Ud no respondio si queria repetir o no la operacion")
+    // }
+  // Pero en este caso ese codigo de arriba no funcionaria, porque preguntaRepeticionCrear = " " 
+  // al tener un espacio en el medio se convierte en "true" en ese if, aunque esté vacia. 
+
+
   let preguntaRepeticionCrear = " "
   while (preguntaRepeticionCrear !== "NO") {
     let nombre = prompt("Por favor, ingrese su nombre de pila")
@@ -81,6 +124,19 @@ ingresando el número correspondiente:
           break;
   case "2":
     let preguntaNombreABuscar = prompt(`Por favor, ingrese el nombre del usuario que quiere buscar`)
+
+    // Me gusta este codigo de aca, porque permite que el usuario escriba por ejemplo CARLA
+    // y aun asi tu programa encuentre a "Carla". 
+    // El problema se daria cuando el usuario agrega un usuario nuevo y lo escribe todo en mayusculas
+    // por ejemplo si agregamos SOFIA con mayusculas. 
+    // El nombre se guarda en mayusculas en el array de usuarios, 
+    // y cuando lo queremos encontrar, no tenemos manera de hacerlo
+    // Porque tu codigo siempre va a buscar en el array a "Sofia"
+    // Una buena solucion seria hacer esta misma logica al agregar un usuario
+    // Entonces si yo escribo SOFIA, se me guarda en el array como Sofia
+    // Eso no solo permite que el codigo de abajo funcione en todos los casos, 
+    // sino que ademas deja mas prolijo el array con los usuarios :) 
+
     let nombreUsuario = preguntaNombreABuscar.toLowerCase()
     let primeraLetra = nombreUsuario.charAt(0).toUpperCase() 
     let restoDelNombre = nombreUsuario.slice(1, preguntaNombreABuscar.length)
@@ -196,4 +252,5 @@ else if (accionMinuscula === "salir") {
   }
 
 }
+
 
